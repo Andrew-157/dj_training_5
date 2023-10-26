@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+{{ month|title }} Challenge
+{% endblock %}
+
+{% block navbar %}
+{% include 'challenges/includes/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<main>
+    <section>
+        <h1>{% now "Y" %} {{ month|title }}'s challenge</h1>
+        {% if not challenge %}
+        <p>No challenge set for this month</p>
+        {% else %}
+        <p>{{ challenge }}</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
