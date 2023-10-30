@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_title %}
 {{ month|title }} Challenge
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'challenges/challenge.css' %}?timestamp={% now 'U' %}">
+<link rel="stylesheet" href="{% static 'challenges/includes/header.css' %}?timestamp={% now 'U' %}">
 {% endblock %}
 
 {% block navbar %}
@@ -13,7 +19,7 @@
     <section>
         <h1>{% now "Y" %} {{ month|title }}'s challenge</h1>
         {% if not challenge %}
-        <p>No challenge set for this month</p>
+        <p class="fallback">No challenge set for this month</p>
         {% else %}
         <p>{{ challenge }}</p>
         {% endif %}
